@@ -15,10 +15,10 @@ else
 
 	if [ -n "${DOCKER_TAG}" ]; then
 		echo "Using DOCKER_TAG : $DOCKER_TAG"
-		DOCKER_IMAGE="${DOCKER_REPO}/jenkins-dev:${DOCKER_TAG}"
+		DOCKER_IMAGE="${DOCKER_REPO}:${DOCKER_TAG}"
 	else
 		TAG=`git rev-parse HEAD`
-		DOCKER_IMAGE="${DOCKER_REPO}/jenkins-dev:${TAG}"
+		DOCKER_IMAGE="${DOCKER_REPO}:${TAG}"
 	fi
 
 	# docker build and publish
@@ -29,4 +29,4 @@ else
 fi
 
 # Use tooling to reference the correct image (via templating) and publish stub
-env TEMPLATE_DOCKER-IMAGE="${DOCKER_IMAGE}" tools/publish_aws.py jenkins stub-universe-all-ucr universe/
+#env TEMPLATE_DOCKER-IMAGE="${DOCKER_IMAGE}" tools/publish_aws.py jenkins stub-universe-all-ucr universe/
